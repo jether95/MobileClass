@@ -41,6 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void sendLogin() {
         String fullText = etLoginName.getText().toString();
-        Toast.makeText(this,"hola"+ fullText,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"hola "+ fullText,Toast.LENGTH_LONG).show();
     }
 }
