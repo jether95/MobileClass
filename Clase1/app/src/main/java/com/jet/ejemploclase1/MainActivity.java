@@ -2,6 +2,7 @@ package com.jet.ejemploclase1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -39,8 +40,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void sendLogin(){
+        if(etLoginName.getText().toString().equalsIgnoreCase("juaco") && etLoginPassword.getText().toString().equalsIgnoreCase("1234")){
+            Intent calculatorIntent = new Intent(this, CalculatorActivity.class);
+            startActivity(calculatorIntent);
+            this.onDestroy();
+        }
+
+    }
+
+    /*
+    ejemplo
     private void sendLogin() {
         String fullText = etLoginName.getText().toString();
         Toast.makeText(this,"hola "+ fullText,Toast.LENGTH_LONG).show();
     }
+
+     */
 }

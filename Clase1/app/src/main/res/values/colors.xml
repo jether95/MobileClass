@@ -11,6 +11,8 @@
     <color name="instagram">#3f729b</color>
     <color name="blue">#3B5988</color>
     <color name="instagramInputs">#a3579f</color>
+    <color name="calculatorBox">#E4DBDB</color>
     <color name="transparent">#80000000</color>
+
 
 </resources>
