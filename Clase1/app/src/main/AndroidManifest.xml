@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".CalculatorActivity"></activity>
+        <activity android:name=".MainClaculatorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CalculatorActivity" />
         <activity android:name=".InstagramActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
