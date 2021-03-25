@@ -43,7 +43,12 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnCalculator){
-
+            
         }
+
+    }
+
+    public void ImcCalculator(){
+
     }
 }
