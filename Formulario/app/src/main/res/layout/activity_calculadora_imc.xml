@@ -10,7 +10,7 @@
         android:id="@+id/tvInformation"
         android:layout_width="280dp"
         android:layout_height="115dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="altura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -55,8 +55,8 @@
 
     <ImageView
         android:id="@+id/imgState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

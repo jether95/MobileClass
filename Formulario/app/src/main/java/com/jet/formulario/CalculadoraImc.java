@@ -29,6 +29,7 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
         String email = intent.getStringExtra("emailCalculator");
         String message = "Hola " + name + " " + surname + " " + "es un gusto tenerte aca tu correo para el informe es: "+email;
 
+
         tvInformation = findViewById(R.id.tvInformation);
         tvResult = findViewById(R.id.tvResult);
         txtHeight = findViewById(R.id.txtHeight);
@@ -43,16 +44,19 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnCalculator){
-            ImcCalculator(Integer.parseInt(txtHeight.getText().toString()), Integer.parseInt(txtWeight.getText().toString()));
+            ImcCalculator(Double.parseDouble(txtHeight.getText().toString()), Integer.parseInt(txtWeight.getText().toString()));
         }
 
     }
 
-    public void ImcCalculator(int height, int weight){
-        double operation = weight/Math.pow(height/100, 2);
+    public void ImcCalculator(double height, int weight){
+        double operation = weight/Math.pow(height, 2);
+        String ImcState = "";
+        if(operation < 18.5){
+            ImcState = "BAJO PESO - su IMC esta por debajo de 18.5";
+            tvResult.setText(String.valueOf(String.format("%.3f",operation))+"\n"+ImcState);
+        }
 
-        //tvResult.setText(String.valueOf(String.format("%.3f",operation)));
-        tvResult.setText(String.valueOf(operation));
 
     }
 }
