@@ -27,7 +27,7 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
         String name = intent.getStringExtra("nameCalculator");
         String surname = intent.getStringExtra("surnameCalculator");
         String email = intent.getStringExtra("emailCalculator");
-        String message = "Hola" + name + " " + surname + " " + "es un gusto tenerte aca tu correo para el informe es: "+email;
+        String message = "Hola " + name + " " + surname + " " + "es un gusto tenerte aca tu correo para el informe es: "+email;
 
         tvInformation = findViewById(R.id.tvInformation);
         tvResult = findViewById(R.id.tvResult);
@@ -43,12 +43,16 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnCalculator){
-            
+            ImcCalculator(Integer.parseInt(txtHeight.getText().toString()), Integer.parseInt(txtWeight.getText().toString()));
         }
 
     }
 
-    public void ImcCalculator(){
+    public void ImcCalculator(int height, int weight){
+        double operation = weight/Math.pow(height/100, 2);
+
+        //tvResult.setText(String.valueOf(String.format("%.3f",operation)));
+        tvResult.setText(String.valueOf(operation));
 
     }
 }
