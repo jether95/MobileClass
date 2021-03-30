@@ -52,10 +52,25 @@ public class CalculadoraImc extends AppCompatActivity implements View.OnClickLis
     public void ImcCalculator(double height, int weight){
         double operation = weight/Math.pow(height, 2);
         String state;
+
         if(operation < 18.5){
             state = "BAJO PESO - su IMC esta por debajo de 18.5";
-            tvResult.setText(String.format("%.3f", operation)+ state);
-            imgEstate.setBackgroundResource(R.drawable.control);
+            tvResult.setText(String.format("%.3f", operation)+ "\n"+state);
+            imgEstate.setImageResource(R.drawable.bajopeso);
+        }else if(operation >= 18.5 && operation <= 24.9){
+            state = "NORMAL - su IMC esta entre 18.5 y 24.9";
+            tvResult.setText(String.format("%.3f", operation)+ "\n"+state);
+            imgEstate.setImageResource(R.drawable.normal1);
+
+        }else if(operation >= 25.0 && operation <= 29.9){
+            state = "SOBREPESO - su IMC esta entre 25.0 y 29.9";
+            tvResult.setText(String.format("%.3f", operation)+ "\n"+state);
+            imgEstate.setImageResource(R.drawable.sobrepeso);
+
+        }else{
+            state = "OBESO - su IMC esta por encima de 30.0";
+            tvResult.setText(String.format("%.3f", operation)+ "\n"+state);
+            imgEstate.setImageResource(R.drawable.obeso);
         }
 
     }
