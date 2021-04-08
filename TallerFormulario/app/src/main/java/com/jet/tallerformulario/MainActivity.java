@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSave;
     Button btnOlder;
     Button btnYounger;
+    Button btnWages;
     TextView tvList;
 
 
@@ -47,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSave = findViewById(R.id.btnSave);
         btnYounger = findViewById(R.id.btnYounger);
         btnOlder = findViewById(R.id.btnOlder);
+        btnWages = findViewById(R.id.btnWages);
 
 
         btnSave.setOnClickListener(this);
         btnYounger.setOnClickListener(this);
         btnOlder.setOnClickListener(this);
+        btnWages.setOnClickListener(this);
 
 
     }
@@ -94,11 +97,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvList.setText(mayor);
         }
 
+        else if(v.getId() == R.id.btnWages){
+            orderWages();
+            String lowerSalary = "";
+            String higherSalary  = "";
+            double sumWages =0;
+            double promWages;
+            for (int i = 0; i<orderList.size(); i++) {
+                higherSalary ="El salario mas alto es: "+orderList.get(i).toString()+"\n";
+                sumWages=sumWages+orderList.get(i);
+            }
+            for (int i = orderList.size()-1; i>=0; i--) {
+                lowerSalary ="El salario mas bajo es: "+orderList.get(i).toString()+"\n";
+            }
+            promWages = sumWages/orderList.size();
+            tvList.setText(higherSalary+lowerSalary+"El promedio es: "+promWages);
+        }
+
     }
 
     public ArrayList orderAges(){
         for (int i = 0; i < PersonList.size(); i++) {
             orderList.add(PersonList.get(i).getAge());
+        }
+        Collections.sort(orderList);
+        return orderList;
+    }
+
+    public ArrayList orderWages(){
+        for (int i = 0; i < PersonList.size(); i++) {
+            orderList.add(PersonList.get(i).getSalary());
         }
         Collections.sort(orderList);
         return orderList;
