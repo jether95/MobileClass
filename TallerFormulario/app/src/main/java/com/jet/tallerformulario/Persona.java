@@ -3,16 +3,16 @@ package com.jet.tallerformulario;
 import android.widget.EditText;
 
 public class Persona {
-    protected EditText name;
-    protected EditText surNMame;
-    protected EditText email;
-    protected EditText age;
-    protected EditText salary;
-    protected EditText position;
+    String name;
+    String surName;
+    String email;
+    Integer age;
+    Integer salary;
+    String position;
 
-    public Persona(EditText name, EditText surNMame, EditText email, EditText age, EditText salary, EditText position) {
+    public Persona(String name, String surName, String email, Integer age, Integer salary, String position) {
         this.name = name;
-        this.surNMame = surNMame;
+        this.surName = surName;
         this.email = email;
         this.age = age;
         this.salary = salary;
@@ -20,58 +20,63 @@ public class Persona {
     }
 
 
-    public EditText getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(EditText name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public EditText getSurNMame() {
-        return surNMame;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSurNMame(EditText surNMame) {
-        this.surNMame = surNMame;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public EditText getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(EditText email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public EditText getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(EditText age) {
+    public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public EditText getSalary() {
-        return salary;
-    }
-
-    public void setSalary(EditText salary) {
-        this.salary = salary;
-    }
-
-    public EditText getPosition() {
-        return position;
-    }
-
-    public void setPosition(EditText position) {
-        this.position = position;
     }
 
     @Override
     public String toString() {
         return "Persona{" +
-                "name=" + name +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", position='" + position + '\'' +
                 '}';
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

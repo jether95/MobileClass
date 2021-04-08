@@ -2,6 +2,7 @@ package com.jet.tallerformulario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,25 +10,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText txtName;
-    private EditText txtLastName;
-    private EditText txtEmail;
-    private EditText txtAge;
-    private EditText txtSalary;
-    private EditText txtPosition;
-    private Button btnSave;
-    private TextView tvList;
+    EditText txtName;
+    EditText txtLastName;
+    EditText txtEmail;
+    EditText txtAge;
+    EditText txtSalary;
+    EditText txtPosition;
 
-    private Persona objPersona;
-    private ArrayList<Persona> PersonList = new ArrayList<>();
+    Button btnSave;
+    Button btnConsultation;
+    Button btnYounger;
+    TextView tvList;
+
+
+    ArrayList<Persona> PersonList = new ArrayList();
+    ArrayList<Integer> orderList = new ArrayList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         txtName = findViewById(R.id.txtName);
         txtLastName = findViewById(R.id.txtlastName);
@@ -37,26 +45,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtPosition = findViewById(R.id.txtPosition);
         tvList = findViewById(R.id.tvList);
         btnSave = findViewById(R.id.btnSave);
+        btnYounger = findViewById(R.id.btnYounger);
+
 
         btnSave.setOnClickListener(this);
-
-        objPersona = new Persona(txtName, txtLastName, txtEmail, txtAge, txtSalary, txtPosition);
+        btnConsultation.setOnClickListener(this);
 
 
     }
 
     @Override
     public void onClick(View v) {
-        String result ="";
-        PersonList.add(objPersona);
+        if(v.getId() == R.id.btnSave){
 
-        for (int i = 0; i < PersonList.size(); i++){
-            if(i + 1 < PersonList.size())
-                result += PersonList.get(i).toString() + " | ";
-            else
-                result += PersonList.get(i).toString();
+            String name =txtName.getText().toString();
+            String lastName = txtLastName.getText().toString();
+            Integer age = Integer.parseInt(txtAge.getText().toString());
+            Integer salary = Integer.parseInt(txtSalary.getText().toString());
+            String position = txtPosition.getText().toString();
+            String email = txtEmail.getText().toString();
+
+            String message = "";
+
+            Persona objPersona = new Persona(name, lastName, email, age, salary, position);
+            PersonList.add(objPersona);
+            for(int i = 0; i<PersonList.size(); i++){
+                message = PersonList.get(i).toString()+"\n";
+            }
+            tvList.setText(message);
+        }
+        else if(v.getId() == R.id.btnYounger){
+            String younger = "";
+            orderAges();
+            for (int i = orderList.size()-1; i>=0; i--) {
+                younger =orderList.get(i).toString();
+            }
+            tvList.setText(younger);
         }
 
-        tvList.setText(String.format(result));
     }
+
+    public ArrayList orderAges(){
+        for (int i = 0; i < PersonList.size(); i++) {
+            orderList.add(PersonList.get(i).getAge());
+        }
+        Collections.sort(orderList);
+        return orderList;
+    }
+
 }
