@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText txtPosition;
 
     Button btnSave;
-    Button btnConsultation;
+    Button btnOlder;
     Button btnYounger;
     TextView tvList;
 
@@ -46,10 +46,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvList = findViewById(R.id.tvList);
         btnSave = findViewById(R.id.btnSave);
         btnYounger = findViewById(R.id.btnYounger);
+        btnOlder = findViewById(R.id.btnOlder);
 
 
         btnSave.setOnClickListener(this);
-        btnConsultation.setOnClickListener(this);
+        btnYounger.setOnClickListener(this);
+        btnOlder.setOnClickListener(this);
 
 
     }
@@ -81,6 +83,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 younger =orderList.get(i).toString();
             }
             tvList.setText(younger);
+        }
+
+        else if (v.getId() == R.id.btnOlder){
+            String mayor ="";
+            orderAges();
+            for (int i = 0; i<orderList.size(); i++) {
+                mayor =orderList.get(i).toString();
+            }
+            tvList.setText(mayor);
         }
 
     }
