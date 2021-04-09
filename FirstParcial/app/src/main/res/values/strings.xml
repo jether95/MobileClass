@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FirstParcial</string>
+    <string-array name="Categories">
+        <item>Seleccione</item>
+        <item>lacteos</item>
+        <item>carnes</item>
+        <item>legumbres</item>
+        <item>cereales</item>
+        <item>grasa</item>
+        <item>frutas</item>
+
+    </string-array>
+
+</resources>
