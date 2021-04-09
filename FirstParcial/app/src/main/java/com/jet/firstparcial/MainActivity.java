@@ -2,6 +2,7 @@ package com.jet.firstparcial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -107,12 +108,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             double sum = 0;
             double promPrices;
             for(int i = 0; i < OrderList.size(); i++){
-                OrderList.add(ProductList.get(i).getValue());
                 sum = sum + OrderList.get(i);
             }
             promPrices = sum / OrderList.size();
             tvResult.setText(String.valueOf(promPrices));
         }
+
+
+        else if(v.getId() == R.id.btnIvaInformation){
+            Intent intent = new Intent(this, IvaInformation.class);
+
+            startActivity(intent);
+        }
+
 
 
     }
