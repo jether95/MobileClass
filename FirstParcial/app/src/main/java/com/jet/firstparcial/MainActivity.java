@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnIvaInformation;
     Button btnExpensive;
     Button btnCheap;
+    Button btnAverage;
 
     ArrayList<Product> ProductList = new ArrayList();
     ArrayList<Double> OrderList = new ArrayList();
@@ -51,11 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnIvaInformation = findViewById(R.id.btnIvaInformation);
         btnExpensive = findViewById(R.id.btnExpensive);
         btnCheap = findViewById(R.id.btnCheap);
+        btnAverage = findViewById(R.id.btnAverage);
 
         btnSave.setOnClickListener(this);
         btnIvaInformation.setOnClickListener(this);
         btnExpensive.setOnClickListener(this);
         btnCheap.setOnClickListener(this);
+        btnAverage.setOnClickListener(this);
     }
 
     @Override
@@ -93,12 +96,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         else if(v.getId() == R.id.btnCheap){
             String cheap = "";
-            orderPrices();
+            orderPrices2();
             for (int i = 10; i>=0; i--) {
                 cheap = OrderList.toString();
             }
             tvResult.setText(cheap);
         }
+
+        else if(v.getId() == R.id.btnAverage){
+            double sum = 0;
+            double promPrices;
+            for(int i = 0; i < OrderList.size(); i++){
+                OrderList.add(ProductList.get(i).getValue());
+                sum = sum + OrderList.get(i);
+            }
+            promPrices = sum / OrderList.size();
+            tvResult.setText(String.valueOf(promPrices));
+        }
+
+
     }
 
     public ArrayList orderPrices(){
@@ -106,6 +122,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             OrderList.add(ProductList.get(i).getValue());
         }
         Collections.sort(OrderList);
+        return OrderList;
+    }
+
+    public ArrayList orderPrices2(){
+        for(int i = 0; i < ProductList.size(); i++){
+            OrderList.add(ProductList.get(i).getValue());
+        }
+        Collections.reverse(OrderList);
         return OrderList;
     }
 
