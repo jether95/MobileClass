@@ -2,6 +2,7 @@ package com.jet.apiwhisky;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,8 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.imgWhisky){
-
+            Intent whiskyIntent = new Intent(this, WhiskyApi.class);
+            startActivity(whiskyIntent);
         }
+
         if(v.getId() == R.id.imgDistillery){
 
         }
