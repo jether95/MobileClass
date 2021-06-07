@@ -1,7 +1,11 @@
 package com.jet.api;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.jet.api.ApiManager.RetrofitClient;
@@ -13,9 +17,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listCivilizations;
+    Civilizations myCivilizations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listCivilizations = findViewById(R.id.listCivilizations);
         getFromInternetCivilizations();
+
+        listCivilizations.setOnItemClickListener(this);
     }
 
     private void getFromInternetCivilizations(){
@@ -30,15 +37,11 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Civilizations>() {
             @Override
             public void onResponse(Call<Civilizations> call, Response<Civilizations> response) {
-                    Civilizations myCivilizations = response.body();
+                    myCivilizations = response.body();
                     String message = "";
                     CivilizationAdapter adapter = new CivilizationAdapter(MainActivity.this, myCivilizations.getCivilizationList());
                     listCivilizations.setAdapter(adapter);
 
-                /*for (int i = 0; i < myCivilizations.getCivilizationList().size(); i++){
-                    message = message + myCivilizations.getCivilizationList().get(i).getNameCivilization() + " : ";
-                }
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();*/
             }
 
             @Override
@@ -46,5 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ocurrio un error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent in = new Intent(this, CivilizationDetail.class);
+        in.putExtra("id", myCivilizations.getCivilizationList().get(position).getIdCivilization());
+        startActivity(in);
     }
 }
