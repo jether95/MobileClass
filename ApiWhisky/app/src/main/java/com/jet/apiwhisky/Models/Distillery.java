@@ -3,7 +3,7 @@ package com.jet.apiwhisky.Models;
 import com.google.gson.annotations.SerializedName;
 
 public class Distillery {
-    @SerializedName("distilleries_info")
+    @SerializedName("name")
     private String distilleryName;
 
     public String getDistilleryName() {

@@ -41,7 +41,7 @@ public class DistilleryApi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<Distillery>> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "ocurrio un error", Toast.LENGTH_SHORT).show();
             }
         });
     }
