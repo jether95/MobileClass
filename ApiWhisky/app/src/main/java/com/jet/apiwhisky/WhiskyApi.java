@@ -8,7 +8,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.jet.apiwhisky.ApiManager.RetrofitClient;
-import com.jet.apiwhisky.Models.Whiskys;
+import com.jet.apiwhisky.Models.Whisky;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +19,7 @@ import retrofit2.Response;
 public class WhiskyApi extends AppCompatActivity implements View.OnClickListener {
 
     ListView listWhiskey;
-    Whiskys myWhiskys;
+    ArrayList<Whisky> myWhiskys;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +32,18 @@ public class WhiskyApi extends AppCompatActivity implements View.OnClickListener
     }
 
     private void getFromInternetWhisky(){
-        Call<Whiskys> call = RetrofitClient.getInstance().getMyApi().getWhiskys();
-        call.enqueue(new Callback<Whiskys>() {
+        Call<ArrayList<Whisky>> call = RetrofitClient.getInstance().getMyApi().getWhiskys();
+        call.enqueue(new Callback<ArrayList<Whisky>>() {
 
             @Override
-            public void onResponse(Call<Whiskys> call, Response<Whiskys> response) {
+            public void onResponse(Call<ArrayList<Whisky>> call, Response<ArrayList<Whisky>> response) {
                 myWhiskys = response.body();
-                WhiskyAdapter adapter = new WhiskyAdapter(WhiskyApi.this, myWhiskys.getWhiskyList());
+                WhiskyAdapter adapter = new WhiskyAdapter(WhiskyApi.this, myWhiskys);
                 listWhiskey.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<Whiskys> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Whisky>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "ocurrio un error", Toast.LENGTH_SHORT).show();
             }
         });

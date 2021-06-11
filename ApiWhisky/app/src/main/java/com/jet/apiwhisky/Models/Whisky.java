@@ -3,12 +3,8 @@ package com.jet.apiwhisky.Models;
 import com.google.gson.annotations.SerializedName;
 
 public class Whisky {
-    @SerializedName("name")
+    @SerializedName("auction_slug")
     private String whiskyName;
-
-    public Whisky(String whiskyName) {
-        this.whiskyName = whiskyName;
-    }
 
     public String getWhiskyName() {
         return whiskyName;

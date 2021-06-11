@@ -35,10 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId() == R.id.imgWhisky){
             Intent whiskyIntent = new Intent(this, WhiskyApi.class);
             startActivity(whiskyIntent);
+
         }
 
         if(v.getId() == R.id.imgDistillery){
-
+            Intent distilleryIntent = new Intent(this, DistilleryApi.class);
+            startActivity(distilleryIntent);
         }
 
     }
