@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface ApiWhisky {
     String BASE_URL="https://whiskyhunter.net/api/";
@@ -16,6 +17,9 @@ public interface ApiWhisky {
 
     @GET("distilleries_info")
     Call<ArrayList<Distillery>> getDistilleryName();
+
+    @GET("auctions_info")
+    Call<ArrayList<Whisky>> getWhiskyDetails();
 
 
 

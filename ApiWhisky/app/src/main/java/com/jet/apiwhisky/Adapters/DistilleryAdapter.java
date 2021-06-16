@@ -1,4 +1,4 @@
-package com.jet.apiwhisky;
+package com.jet.apiwhisky.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.jet.apiwhisky.Models.Distillery;
 import com.jet.apiwhisky.Models.Whisky;
+import com.jet.apiwhisky.R;
 
 import java.util.List;
 

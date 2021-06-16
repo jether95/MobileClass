@@ -3,12 +3,14 @@ package com.jet.apiwhisky;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jet.apiwhisky.Adapters.DistilleryAdapter;
 import com.jet.apiwhisky.ApiManager.RetrofitClient;
 import com.jet.apiwhisky.Models.Distillery;
-import com.jet.apiwhisky.Models.Whisky;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DistilleryApi extends AppCompatActivity {
+public class DistilleryApi extends AppCompatActivity implements AdapterView.OnItemClickListener {
      ListView distilleryList;
      ArrayList<Distillery> myDistilleries;
 
@@ -25,8 +27,9 @@ public class DistilleryApi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distillery_api);
         getFromInternetDistilleries();
-
         distilleryList = findViewById(R.id.listDistillery);
+        distilleryList.setOnItemClickListener(this);
+
     }
 
     private void getFromInternetDistilleries(){
@@ -44,6 +47,11 @@ public class DistilleryApi extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ocurrio un error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }
 

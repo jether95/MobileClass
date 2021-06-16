@@ -2,11 +2,14 @@ package com.jet.apiwhisky;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jet.apiwhisky.Adapters.WhiskyAdapter;
 import com.jet.apiwhisky.ApiManager.RetrofitClient;
 import com.jet.apiwhisky.Models.Whisky;
 
@@ -16,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WhiskyApi extends AppCompatActivity implements View.OnClickListener {
+public class WhiskyApi extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listWhiskey;
     ArrayList<Whisky> myWhiskys;
@@ -28,6 +31,7 @@ public class WhiskyApi extends AppCompatActivity implements View.OnClickListener
         getFromInternetWhisky();
 
         listWhiskey = findViewById(R.id.listWhisky);
+        listWhiskey.setOnItemClickListener(this);
 
     }
 
@@ -49,8 +53,12 @@ public class WhiskyApi extends AppCompatActivity implements View.OnClickListener
         });
     }
 
+
     @Override
-    public void onClick(View v) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent in = new Intent(this, WhiskyDetails.class);
+        //in.putExtra("auction_slug", myWhiskys.get(position).getWhiskyName());
+        startActivity(in);
 
     }
 }

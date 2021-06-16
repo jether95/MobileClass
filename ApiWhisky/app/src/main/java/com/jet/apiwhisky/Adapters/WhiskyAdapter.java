@@ -1,4 +1,4 @@
-package com.jet.apiwhisky;
+package com.jet.apiwhisky.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -44,6 +44,7 @@ public class WhiskyAdapter extends BaseAdapter {
         if (convertView == null){
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.whiskyitem, null);
+
         }
 
         Whisky whisky = myWhisky.get(position);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jet.apiwhisky">
+    package="com.jet.finalproyect">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -14,11 +14,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ApiWhisky"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".WhiskyDetails"></activity>
-        <activity android:name=".DistilleryApi" />
-        <activity android:name=".WhiskyApi" />
+        android:theme="@style/Theme.FinalProyect">
+        <activity android:name=".EpisodeApi"></activity>
+        <activity android:name=".Models.EpisodeApi" />
+        <activity android:name=".CharactersApi" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
