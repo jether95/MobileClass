@@ -1,6 +1,8 @@
 package com.jet.finalproyect.BreakingBadApi;
 
 import com.jet.finalproyect.Models.Characters;
+import com.jet.finalproyect.Models.Episodes;
+import com.jet.finalproyect.Models.Quotes;
 
 import java.util.ArrayList;
 
@@ -13,5 +15,10 @@ public interface ApiBreakingBad {
     @GET("characters")
     Call<ArrayList<Characters>> getCharacters();
 
+    @GET("episodes")
+    Call<ArrayList<Episodes>> getEpisodes();
+
+    @GET("quotes")
+    Call<ArrayList<Quotes>> getQuotes();
 
 }

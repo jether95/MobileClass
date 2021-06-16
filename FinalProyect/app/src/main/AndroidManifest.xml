@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProyect">
-        <activity android:name=".EpisodeApi"></activity>
-        <activity android:name=".Models.EpisodeApi" />
+        <activity android:name=".QuotesApi"></activity>
+        <activity android:name=".EpisodeApi" />
         <activity android:name=".CharactersApi" />
         <activity android:name=".MainActivity">
             <intent-filter>
