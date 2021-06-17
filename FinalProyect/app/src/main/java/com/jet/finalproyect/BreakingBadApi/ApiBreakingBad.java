@@ -1,6 +1,7 @@
 package com.jet.finalproyect.BreakingBadApi;
 
 import com.jet.finalproyect.Models.Characters;
+import com.jet.finalproyect.Models.Deaths;
 import com.jet.finalproyect.Models.Episodes;
 import com.jet.finalproyect.Models.Quotes;
 
@@ -20,5 +21,8 @@ public interface ApiBreakingBad {
 
     @GET("quotes")
     Call<ArrayList<Quotes>> getQuotes();
+
+    @GET("deaths")
+    Call<ArrayList<Deaths>> getDeath();
 
 }

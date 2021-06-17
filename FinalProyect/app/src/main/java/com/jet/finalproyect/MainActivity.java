@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button characters;
     private Button episodes;
     private Button quotes;
+    private Button deaths;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         characters = findViewById(R.id.btnCharacters);
         episodes = findViewById(R.id.btnEpisodes);
         quotes = findViewById(R.id.btnQuotes);
+        deaths = findViewById(R.id.btnDeaths);
 
         episodes.setOnClickListener(this);
         characters.setOnClickListener(this);
         quotes.setOnClickListener(this);
+        deaths.setOnClickListener(this);
     }
 
 
@@ -44,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btnQuotes){
             Intent quoteIntent = new Intent(this, QuotesApi.class);
             startActivity(quoteIntent);
+        }
+
+        if(v.getId() == R.id.btnDeaths){
+            Intent deathIntent = new Intent(this, DeathsApi.class);
+            startActivity(deathIntent);
         }
 
     }
