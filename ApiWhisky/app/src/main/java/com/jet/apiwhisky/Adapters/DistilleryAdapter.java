@@ -40,15 +40,15 @@ public class DistilleryAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
+        View vDes = convertView;
         if (convertView == null){
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inf.inflate(R.layout.whiskyitem, null);
+            vDes = inf.inflate(R.layout.whiskyitem, null);
         }
         Distillery distillery = myDistilleryList.get(position);
-        TextView nameDistillery = v.findViewById(R.id.tvName);
+        TextView nameDistillery = vDes.findViewById(R.id.tvName);
         nameDistillery.setText(distillery.getDistilleryName());
 
-        return v;
+        return vDes;
     }
 }
