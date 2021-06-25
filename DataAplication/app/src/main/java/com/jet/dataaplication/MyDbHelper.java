@@ -20,7 +20,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table area(id INTEGER PRIMARY KEY, name TEXT)");
+        db.execSQL("create table area (id INTEGER PRIMARY KEY, nombre TEXT, poblacion INTEGER, latitud REAL, longitud REAL)");
     }
 
     @Override
@@ -33,20 +33,25 @@ public class MyDbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put("id", area.getId());
-        values.put("name", area.getName());
+        values.put("nombre", area.getName());
+        values.put("poblacion", area.getPoblacion());
+        values.put("latitud", area.getLatitud());
+        values.put("longitud", area.getLongitud());
 
         db.insert("area", null, values);
     }
 
-    public ArrayList<Area> selectArea (SQLiteDatabase db){
-        ArrayList<Area> areas = new ArrayList<>();
+    public ArrayList<Area> selectCity(SQLiteDatabase db) {
+        ArrayList<Area> cities = new ArrayList<Area>();
         Cursor filas = db.rawQuery("select * from area", null);
-        if(filas.moveToFirst()){
-            do{
-                Area area = new Area(filas.getString(0), filas.getString(1));
-                areas.add(area);
-            }while (filas.moveToNext());
+        if (filas.moveToFirst()) {
+            do {
+                Area city = new Area(filas.getInt(0), filas.getString(1), filas.getInt(2),
+                        filas.getDouble(3),filas.getDouble(4));
+                cities.add(city);
+            } while (filas.moveToNext());
         }
-        return areas;
+        return cities;
     }
+
 }
