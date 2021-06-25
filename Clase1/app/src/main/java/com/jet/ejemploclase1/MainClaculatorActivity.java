@@ -29,9 +29,10 @@ public class MainClaculatorActivity extends AppCompatActivity implements View.On
     private Button btnEquals;
     private Button btnClear;
 
-    int numberOne = 0;
-    int numberTwo = 0;
-    String operation = "";
+    private Integer numberOne = 0;
+    private Integer numberTwo = 0;
+    private Integer result;
+    private Integer operation = 0;
 
 
 
@@ -82,75 +83,73 @@ public class MainClaculatorActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnClear){
-           resetValues();
+        if (v.getId() == R.id.btnClear) {
+            clear();
         }
-        else if(v.getId() == R.id.btnDivision){
-            makeOperation(Integer.parseInt(txtResult.getText().toString()), "division");
-
+        else if (v.getId() == R.id.btnPlus) {
+            add();
         }
-        else if(v.getId() == R.id.btnPlus){
-            makeOperation(Integer.parseInt(txtResult.getText().toString()), "plus");
-
+        else if (v.getId() == R.id.btnMinus) {
+            subtract();
         }
-        else if(v.getId() == R.id.btnMinus){
-            makeOperation(Integer.parseInt(txtResult.getText().toString()), "minus");
-
+        else if (v.getId() == R.id.btnDivision) {
+            divide();
         }
-        else if(v.getId() == R.id.btnMultiply){
-            makeOperation(Integer.parseInt(txtResult.getText().toString()), "multiply");
-
+        else if (v.getId() == R.id.btnMultiply) {
+            multiply();
         }
-        else if(v.getId() == R.id.btnEquals){
-
+        else if (v.getId() == R.id.btnEquals) {
+            equal();
         }
         else{
-            if(operation.equalsIgnoreCase("") && numberOne != 0){
-                txtResult.setText("");
-            }
-            Button btnSelectedButton = findViewById(v.getId());
-            txtResult.setText(txtResult.getText() + btnSelectedButton.getText().toString());
+            Button btnSelected = findViewById(v.getId());
+            txtResult.setText(txtResult.getText() + btnSelected.getText().toString());
         }
     }
 
-    private void makeOperation (int number, String operationSelected){
+    public void clear() {
         txtResult.setText("");
-        if(numberOne != 0){
-            numberTwo = number;
-            resultOperation(operation);
-            operation = operationSelected;
-        }
-        else{
-            operation = operationSelected;
-            numberOne = number;
-        }
     }
 
-    private void resultOperation(String operation){
-        if (operation.equalsIgnoreCase("plus")){
-            numberOne = numberOne + numberTwo;
-        }
-        else if(operation.equalsIgnoreCase("minus")){
-            numberOne = numberOne - numberTwo;
-        }else if (operation.equalsIgnoreCase("multiply")){
-            numberOne = numberOne * numberTwo;
-        }
-        else{
-            Double result = (double)numberOne/(double)numberTwo;
-            numberOne = Integer.parseInt(String.valueOf(result));
-            txtResult.setText(result.toString());
-        }
-
-        if(!operation.equalsIgnoreCase("division")){
-            txtResult.setText(String.valueOf(numberOne));
-        }
+    public void add() {
+        numberOne = (Integer.parseInt(txtResult.getText().toString()));
+        operation = 1;
+        clear();
     }
 
-    private  void resetValues(){
-        txtResult.setText("");
-        numberOne = 0;
-        numberTwo = 0;
-        operation = "";
+    public void subtract() {
+        numberOne = (Integer.parseInt(txtResult.getText().toString()));
+        operation = 2;
+        clear();
+    }
+
+    public void divide() {
+        numberOne = (Integer.parseInt(txtResult.getText().toString()));
+        operation = 3;
+        clear();
+    }
+
+    public void multiply() {
+        numberOne = (Integer.parseInt(txtResult.getText().toString()));
+        operation = 4;
+        clear();
+    }
+
+    public void equal() {
+        numberTwo = (Integer.parseInt(txtResult.getText().toString()));
+        if (operation.equals(1)) {
+            result = numberOne + numberTwo;
+        }
+        if (operation.equals(2)) {
+            result = numberOne - numberTwo;
+        }
+        if (operation.equals(3)) {
+            result = numberOne / numberTwo;
+        }
+        if (operation.equals(4)) {
+            result = numberOne * numberTwo;
+        }
+        txtResult.setText(result.toString());
 
     }
 
